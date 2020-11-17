@@ -2,7 +2,7 @@
 layout: post
 title:      "Why Data Science?"
 date:       2020-07-21 23:36:40 -0400
-permalink:  why_data_science
+
 ---
 
 
