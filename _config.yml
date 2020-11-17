@@ -1,11 +1,11 @@
 # Site settings
 author: Jeff Spagnola
-title: 
+title: Adventures in Data Science
 header-img: img/home-bg.png
 email: jeff.spags@gmail.com
 copyright_name: Jeff Spagnola
 description: > # this means to ignore newlines until "baseurl:"
-  
+  Adventures in Data Science
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  spags093
