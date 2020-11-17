@@ -1,13 +1,13 @@
 ---
 layout: post
-title:      "Global Terrorism Analysis:  # Global Terrorism Analysis"
+title:      "Global Terrorism Analysis"
 date:       2020-10-06 23:01:48 -0400
 permalink:  global_terrorism_analysis_predicting_the_success_of_terrorist_attacks
 ---
 
 ## Predicting the Success of Terrorist Attacks
 
-**Authors**: Jeff Spagnola
+**Author**: Jeff Spagnola
 
 The contents of this repository detail an analysis of the module three project of the Flatiron School Data Science program. This analysis is detailed in hopes of making the work accessible and replicable.
 
@@ -43,7 +43,7 @@ This notebook was created using the OSEMN data science method and, below, we wil
 ### Obtain
 The first step in the process, as usual, is to import the Global Terrorism Database using pandas.  The dataset is very large but we decided to import the whole thing and then start to pare it down from there during the scrubbing proces.  The original dataframe is over 180,000 rows and 135 columns.  
 
-```json
+```python
 
 df = pd.read_csv('global_terrorism.csv', engine = 'python')
 print(df.shape)
@@ -56,7 +56,7 @@ Upon initial inspection, there were several methods we were able to use to make 
 
 From here, we split the data into training and testing sets using train_test_split.  
 
-```json
+```python
 
 X = df.drop('success', axis = 1)
 y = df['success']
@@ -66,7 +66,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = 30)
 
 Next, we separated the training data into numerical and categorical columns as well as created Pipelines to transform the data for modeling.  
 
-```json
+```python
 
 num_transformer = Pipeline(steps = [('imputer', KNNImputer(n_neighbors = 2)), ('scaler', StandardScaler())])
 cat_transformer = Pipeline(steps = [
@@ -115,7 +115,7 @@ The modeling phase was an iterative process where we ran several different types
 #### Logistic Regression
 First on the list is Logistic Regression.  First, we run a base model and then performed a GridSearchCV in order to tune the hyperparameters.  After getting the optimal hyperparameters, we fit a seocnd model and reviewed our results. 
 
-```json
+```python
 params = {'class_weight': ['balanced'],
           'solver': ['lbfgs', 'liblinear'],
           'C': [1.0, 3.0, 5.0]}
@@ -133,7 +133,7 @@ logreg2.fit(X_train_trans_df, y_train)
 #### Decision Tree
 Next, we ran a base decision tree classifier to see if this would return better results.  Again, we then performed a GridSearchCV to find the optimal hyperparameters and then fit a second model.  
 
-```json
+```python
 params = {'class_weight': [None, 'balanced'],
           'criterion': ['gini', 'entropy'],
           'max_depth': [1, 3, 5], 
@@ -153,7 +153,7 @@ decision_tree2.fit(X_train_trans_df, y_train)
 #### Random Forest
 After the decision tree, we decided to try an ensemble method and used the random forest algorithm.  Once again, we performed a GridSearchCV and fit the model with the tuned hyperparameters.
 
-```json
+```python
 params = {'class_weight': [None, 'balanced'],
           'criterion': ['gini', 'entropy'],
           'max_depth': [1, 3, 5], 
@@ -173,7 +173,7 @@ random_forest2.fit(X_train_trans_df, y_train)
 #### XGBoost
 Next, we wanted to experiment with using XGBoost on the data.  In case you're not noticing the pattern yet, we performed a GridSearchCV and fit the model with the tuned hyperparameters.
 
-```json
+```python
 params = {'gamma': [0.5, 1, 2, 5],
           'min_child_weight': [1, 5, 10],
           'max_depth': [1, 3, 5]}
@@ -190,7 +190,7 @@ xgboost2.fit(X_train_trans_df, y_train)
 #### Stacking Ensemble
 The results are very good, but we wanted to see if we would be able to get a bit more accuracy by using a Stacking Ensemble made up of our decision tree, random forest, and XGBoost.  
 
-```json
+```python
 estimators = [('dt', DecisionTreeClassifier(class_weight = 'balanced', 
                                             criterion = 'entropy',
                                             max_depth = 5, 
@@ -270,21 +270,4 @@ With more time, we can gain even more insight into what can make a terrorist att
 Please review the narrative of our analysis in [our jupyter notebook](./student-Copy2.ipynb) or review our [presentation](./Mod-3 Project Presentation.pdf)
 
 For any additional questions, please contact **jeff.spags@gmail.com.
-
-
-##### Repository Structure:
-
-Here is where you would describe the structure of your repoistory and its contents, for exampe:
-
-```
-
-├── README.md                       <- The top-level README for reviewers of this project.
-├── student-Copy2.ipynb             <- narrative documentation of analysis in jupyter notebook
-├── Mod-3 Project Presentation.pdf  <- pdf version of project presentation
-└── images
-    └── images                      <- both sourced externally and generated from code
-
-```
- the Success of Terrorist Attacks
-
 
