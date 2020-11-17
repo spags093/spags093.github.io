@@ -10,8 +10,7 @@ permalink:  global_terrorism_analysis_predicting_the_success_of_terrorist_attack
 **Author**: Jeff Spagnola
 
 
-![](http://)
-<center><img src="https://github.com/spags093/dsc-mod-3-project-v2-1-onl01-dtsc-ft-070620/blob/master/main-image.jpeg" height = 250 ></center>
+![](https://github.com/spags093/dsc-mod-3-project-v2-1-onl01-dtsc-ft-070620/blob/master/main-image.jpeg)
 
 
 Terrorism is a worldwide problem.  Between 1970 and 2017, there were 181,691 terrorist attacks recorded globally.  Attacks have been recorded on every continent and in over 180 countries.  In the interest of national security, we will analyze terrorist attacks between 1997 and 2017 to figure out the specifc factors that determine whether a terrorist attack will be successeful.  By knowing the patterns, strenghts and weakness of terrorists and terrorist organizations, we can be more prepared to prevent new attacks in the future.  
